@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Сума зарплат</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .total {
+      font-weight: bold;
+      text-align: right;
+      font-size: 1.2em;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Обчислення суми зарплат</h1>
+    <table id="salary-table">
+      <thead>
+        <tr>
+          <th>Ім’я</th>
+          <th>Зарплата (₴)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="total" id="result"></div>
+  </div>
+
+  <script>
+    function sumSalaries(salaries) {
+      let sum = 0;
+      for (const salary of Object.values(salaries)) {
+        sum += salary;
+      }
+      return sum;
+    }
+
+    const salaries = {
+      "Іван": 100,
+      "Петро": 300,
+      "Марія": 250
+    };
+
+    const tableBody = document.querySelector('#salary-table tbody');
+    for (const [name, salary] of Object.entries(salaries)) {
+      const row = document.createElement('tr');
+      const nameCell = document.createElement('td');
+      const salaryCell = document.createElement('td');
+      nameCell.textContent = name;
+      salaryCell.textContent = salary + ' ₴';
+      row.appendChild(nameCell);
+      row.appendChild(salaryCell);
+      tableBody.appendChild(row);
+    }
+
+    const total = sumSalaries(salaries);
+    document.getElementById('result').textContent = `Загальна сума зарплат: ${total} ₴`;
+  </script>
+</body>
+</html>

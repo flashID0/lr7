@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Деструктуризація об'єкта</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 15px 0;
+      background-color: #f7f9fb;
+      padding: 15px 20px;
+      border-radius: 8px;
+      border-left: 5px solid #007bff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    strong {
+      color: #555;
+    }
+
+    span {
+      font-weight: bold;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Результат деструктуризації</h2>
+    <ul>
+      <li><strong>Ім'я:</strong> <span id="name"></span></li>
+      <li><strong>Вік:</strong> <span id="age"></span></li>
+      <li><strong>Адмін:</strong> <span id="isAdmin"></span></li>
+    </ul>
+  </div>
+
+  <script>
+    let user = { name: "Іван", years: 30 };
+    let { name, years: age, isAdmin = false } = user;
+    document.getElementById("name").textContent = name;
+    document.getElementById("age").textContent = age;
+    document.getElementById("isAdmin").textContent = isAdmin ? "Так" : "Ні";
+  </script>
+</body>
+</html>
